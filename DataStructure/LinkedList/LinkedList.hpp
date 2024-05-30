@@ -5,7 +5,13 @@ Implementation File: `List.hpp` - This file is usually used for implementation o
     In more simple terms, the complier should see the definition and the implementation of templates at the same time, 
     because templates is concretized during the complie time
 */
+#ifndef LINKEDLIST_HPP
+#define LINKEDLIST_HPP
+#include <stdexcept>
+#include <iostream>
 #include "LinkedList.h"
+
+
 
 // destructor implementation
 // walk through the list and delete (delete value and assign nullptr) all elements
@@ -13,10 +19,10 @@ template <typename T>
 LinkedList<T>::~LinkedList() {
     ListNode* current = head_; 
     while(current != nullptr){
-        ListNode* toDelete = current;
+        ListNode* to_delete = current;
         current = current->next;
-        delete toDelete;
-        toDelete = nullptr;
+        delete to_delete;
+        to_delete = nullptr;
     }
 }
 
@@ -46,7 +52,7 @@ const T& LinkedList<T>::operator[](unsigned index){
 
 // insert function implementation
 template <typename T>
-void LinkedList<T>::insert(const T& data, unsigned index = 0){
+void LinkedList<T>::insert(const T& data, unsigned index){
     ListNode* new_node = new ListNode(data); // dynamically allocate for a new ListNode object
 
     // insert at the front
@@ -60,7 +66,7 @@ void LinkedList<T>::insert(const T& data, unsigned index = 0){
     ListNode* current = head_;
     for (unsigned i=0; i<index-1; ++i){
         if (current == nullptr){
-            delete newNode;
+            delete new_node;
             throw std::out_of_range("Index out of range");
         }
         current = current->next;
@@ -72,21 +78,52 @@ void LinkedList<T>::insert(const T& data, unsigned index = 0){
 
 // remove function implementation
 template <typename T>
-void LinkedList<T>::remove(unsigned index = 0){
+void LinkedList<T>::remove(unsigned index){
     if (head_ == nullptr){
         throw std::out_of_range("Index out of range");
     }
 
     if (index == 0){
-        ListNode* toDelete = head_;
+        ListNode* to_delete = head_;
         head_ = head_->next;
-        delete toDelete;
-        toDelete = nullptr;
+        delete to_delete;
+        to_delete = nullptr;
         return;
     }
 
+    // move to the i-1 th index
     ListNode* current = head_;
     for(unsigned i=0; i<index-1; ++i){
-        
+        if (current == nullptr || current->next == nullptr){
+            throw std::out_of_range("Index out of range");
+        }
+        current = current->next;
     }
+
+    ListNode* to_delete = current->next;
+    if (to_delete == nullptr){
+        throw std::out_of_range("Index out of range");
+    }
+    current->next = to_delete->next;
+    delete to_delete;
+    to_delete = nullptr;
 }
+
+// display function implementation
+template <typename T>
+void LinkedList<T>::display() const { // const + function to ensure read-only access
+    ListNode* current = head_;
+    int length = 0;
+
+    while (current != nullptr){
+        std::cout << current->data;
+        if (current->next != nullptr){
+            std::cout << "->";
+        }
+        current = current->next;
+        length++;
+    }
+    std::cout << " /null " << "(length: " << length << ")" << std::endl;
+}
+
+#endif // LINKEDLIST_HPP

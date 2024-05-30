@@ -10,7 +10,7 @@
 
 int main() {
   List<int> list;
-
+  
   // We'll be able to store const references to these objects in the List
   // because these constants on the stack exist in the same function scope
   // that lasts until the end of main().
