@@ -1,5 +1,11 @@
 ### reference (&)
 
+1. Reference in Variables
+
+2. Reference in Function Arguments
+
+3. Difference with Pointers
+
 
 ### const
 This keyword is used to define constant variables, making them immutable after their initial assignment.
