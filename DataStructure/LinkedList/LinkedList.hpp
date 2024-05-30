@@ -55,7 +55,11 @@ const T& LinkedList<T>::operator[](unsigned index) {
 
 // insert function implementation
 template <typename T>
-void LinkedList<T>::insert(const T& data, unsigned index){
+void LinkedList<T>::insert(const T& data, int index){
+    if (index < 0){
+        index = 
+    }
+
     ListNode* new_node = new ListNode(data); // dynamically allocate for a new ListNode object
 
     // insert at the front
