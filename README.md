@@ -1,6 +1,6 @@
 # Coding Test 
 
-This directory covers the various following topics to prepare coding tests and job interviews.
+This directory covers various topics to prepare for coding tests and job interviews.
 
 ### Data Structure
 1. Array
