@@ -38,14 +38,17 @@ typename LinkedList<T>::ListNode* LinkedList<T>::_find(const T& data){
 
 // indexing operator implementation
 template <typename T>
-const T& LinkedList<T>::operator[](unsigned index){
+const T& LinkedList<T>::operator[](unsigned index) {
+    if (head_ == nullptr) {
+        throw std::out_of_range("Index out of range");
+    }
     ListNode* current = head_;
-    while (index > 0 && current->next != nullptr){
-        if (current == nullptr){
-            throw std::out_of_range("Index out of range");
-            current = current->next;
-            index--;
-        }
+    while (index > 0 && current != nullptr) {
+        current = current->next;
+        index--;
+    }
+    if (current == nullptr) {
+        throw std::out_of_range("Index out of range");
     }
     return current->data;
 }

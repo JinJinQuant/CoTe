@@ -12,13 +12,14 @@ private:
 
     ListNode* head_;  // Pointer to the head of the list
     ListNode* _find(const T& data);
+    
 
 public:
     LinkedList() : head_(nullptr) { }  // Constructor to initialize head_
     ~LinkedList();  // Destructor declaration
 
     const T &operator[](unsigned index);  // Operator [] declaration, should be const
-    void insert(const T& data, unsigned index = 0);
+    void insert(const T& data, int index = 0);
     void remove(unsigned index = 0);
     void display() const;
 };

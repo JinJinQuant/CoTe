@@ -1,13 +1,18 @@
 #include "LinkedList.h"
 
 int main(){
-    LinkedList<int> test;
-    test.insert(3);
-    test.display();
+    LinkedList<int> linked_list;
+    linked_list.insert(3);
+    linked_list.display();
 
-    test.insert(5);
-    test.display();
+    linked_list.insert(5);
+    linked_list.insert(7);
+    linked_list.insert(213);
+    linked_list.insert(210305);
+    linked_list.insert(-523);
+    linked_list.display();
     
-    test.insert(7);
-    test.display();
+    std::cout << linked_list[3] << std::endl;
+    linked_list.remove(3);
+    linked_list.display();
 }
