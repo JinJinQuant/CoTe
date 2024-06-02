@@ -12,7 +12,6 @@ Implementation File: `List.hpp` - This file is usually used for implementation o
 #include "LinkedList.h"
 
 
-
 // destructor implementation
 // walk through the list and delete (delete value and assign nullptr) all elements
 template <typename T>
@@ -130,7 +129,7 @@ void LinkedList<T>::display() const { // const + function to ensure read-only ac
         current = current->next;
         length++;
     }
-    std::cout << " /null " << "(length: " << length << ")" << std::endl;
+    std::cout << " /null Hohyun!" << "(length: " << length << ")" << std::endl;
 }
 
 #endif // LINKEDLIST_HPP
