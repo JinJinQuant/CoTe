@@ -129,7 +129,7 @@ void LinkedList<T>::display() const { // const + function to ensure read-only ac
         current = current->next;
         length++;
     }
-    std::cout << " /null Hohyun!" << "(length: " << length << ")" << std::endl;
+    std::cout << " /null" << "(length: " << length << ")" << std::endl;
 }
 
 #endif // LINKEDLIST_HPP
